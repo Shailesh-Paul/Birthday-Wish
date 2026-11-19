@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A Little Surprise for Sandhu 🌷</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(140deg,#fffaf7,#fff0f4,#fffaf8);color:#59434b;font-family:Georgia,serif}
+button{cursor:pointer;font:inherit}
+.wrap{max-width:960px;margin:auto;padding:18px}
+.hero{min-height:92vh;display:grid;place-items:center;text-align:center;padding:35px 15px;position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"✿";position:absolute;font-size:100px;color:#e8afbf;opacity:.35;animation:float 6s infinite}
+.hero:before{left:6%;top:10%}
+.hero:after{right:6%;bottom:10%}
+@keyframes float{50%{transform:translateY(-18px) rotate(12deg)}}
+.kicker{font:11px Arial;letter-spacing:3px;color:#b87588;text-transform:uppercase}
+h1{font-size:clamp(48px,10vw,88px);font-weight:normal;color:#a85f76;margin:18px 0}
+.script{font-style:italic;color:#c27a90}
+.lead{font-size:clamp(17px,3vw,21px);line-height:1.7;max-width:570px;margin:0 auto 25px}
+.btn{border:0;border-radius:30px;background:#bd7188;color:#fff;padding:13px 22px;margin:5px;box-shadow:0 8px 22px #b96e842b}
+.btn.alt{background:#fff;color:#98566e;border:1px solid #edcbd4;box-shadow:none}
+.btn:disabled{opacity:.7;cursor:default}
+section{padding:58px 0}
+.title{text-align:center;font-size:clamp(29px,6vw,43px);font-weight:normal;color:#a85f76;margin:0 0 9px}
+.sub{text-align:center;font:14px/1.7 Arial;color:#987e85;margin:0 auto 25px;max-width:650px}
+.panel{background:#ffffffc9;border:1px solid #f2dce2;border-radius:23px;padding:22px;box-shadow:0 12px 35px #9d526b0c}
+.toolbar{text-align:center;margin:18px 0}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.photo{background:white;padding:9px 9px 14px;box-shadow:0 8px 25px #8c56611a;transform:rotate(var(--tilt,0deg));position:relative}
+.photo img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:#f8e5e9;cursor:zoom-in}
+.photo .remove{position:absolute;right:13px;top:13px;border:0;border-radius:50%;background:white;width:27px;height:27px;color:#8e5268;font-size:18px}
+.caption{width:100%;border:0;border-bottom:1px solid #f0d5dd;text-align:center;padding:7px;background:transparent;color:#8e6571;font:12px Arial}
+.empty{border:1px dashed #e6b8c5;background:#fff9fa;aspect-ratio:4/5;display:grid;place-items:center;text-align:center;color:#b77a8d;padding:12px;font:13px Arial}
+.privacy{font:12px/1.6 Arial;color:#987e85;text-align:center;margin:14px auto 0}
+.letter{max-width:690px;margin:auto;text-align:center;font-size:18px;line-height:1.9}
+.letter p{margin:0 0 15px}
+.signature{font-style:italic;color:#a85f76;font-size:22px}
+.envelope{display:block;margin:auto;border:0;background:transparent;font-size:75px;transition:.2s}
+.envelope:hover{transform:translateY(-5px) rotate(-4deg)}
+.hidden{display:none;max-width:600px;margin:18px auto;background:white;border:1px dashed #dfa9b8;border-radius:18px;padding:22px;text-align:center;font-size:18px;line-height:1.8}
+.hidden.show{display:block;animation:appear .5s}
+@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.cake-area{text-align:center;overflow:hidden}
+.cake-stage{position:relative;width:min(340px,90vw);height:235px;margin:15px auto;display:grid;place-items:center}
+.cake{font-size:130px;filter:drop-shadow(0 12px 9px #dca6b355);transition:.35s}
+.knife{position:absolute;font-size:62px;top:15px;right:0;opacity:0;z-index:2}
+.cake-stage.cut .knife{opacity:1;animation:slice .8s forwards}
+.cake-stage.cut .cake{animation:split .9s forwards}
+@keyframes slice{0%{transform:translate(0,-25px) rotate(-32deg)}65%{transform:translate(-40px,75px) rotate(12deg)}100%{transform:translate(-45px,80px) rotate(12deg);opacity:0}}
+@keyframes split{0%{transform:scale(1)}50%{transform:scale(.92) rotate(-5deg)}100%{transform:scale(1.07)}}
+.status{min-height:25px;font:14px Arial;color:#b16b83}
+.countdown{display:none;color:#b16b83;font-size:20px;margin:12px}
+.countdown.show{display:block}
+.note{display:none;max-width:690px;margin:25px auto;background:white;border:1px solid #efcbd5;border-radius:25px;box-shadow:0 15px 45px #b96e8420;overflow:hidden}
+.note.reveal{display:block;animation:reveal 1.25s ease both}
+@keyframes reveal{0%{opacity:0;transform:translateY(40px) scale(.94);clip-path:inset(100% 0 0)}70%{clip-path:inset(0)}100%{opacity:1;transform:none;clip-path:inset(0)}}
+.note-head{background:linear-gradient(135deg,#fbe2e9,#fff5f5);padding:24px;text-align:center;color:#a85f76}
+.note-head small{font:11px Arial;letter-spacing:2px;text-transform:uppercase}
+.note-head h3{font-size:30px;font-weight:normal;margin:10px 0}
+.note-body{padding:28px;text-align:center;font-size:17px;line-height:1.95}
+.note-body p{margin:0 0 14px}
+.wish{display:none;margin:15px auto;background:white;border:1px solid #f0d5dd;border-radius:18px;padding:20px;max-width:560px;line-height:1.8}
+.wish.show{display:block;animation:appear .5s}
+footer{text-align:center;padding:35px;color:#a57b86;font:12px/1.8 Arial}
+#confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}
+.piece{position:absolute;top:-25px;font-size:20px;animation:fall 3.8s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(650deg);opacity:0}}
+.lightbox{display:none;position:fixed;inset:0;background:#26151dcc;z-index:30;align-items:center;justify-content:center;padding:20px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:80vh;border:9px solid white}
+.lightbox button{position:absolute;border:0;border-radius:50%;width:42px;height:42px;background:white;color:#81485e;font-size:25px}
+.close{top:18px;right:18px}
+.prev{left:18px}
+.next{right:18px}
+
+@media(max-width:760px){
+.gallery{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:520px){
+.gallery{grid-template-columns:repeat(2,1fr);gap:10px}
+.panel{padding:16px}
+.note-body{padding:20px}
+.prev{left:8px}
+.next{right:8px}
+}
+</style>
+</head>
+
+<body>
+<div id="confetti"></div>
+
+<header class="hero">
+<div>
+<div class="kicker">20 November · A day to celebrate you</div>
+<h1>Hey, <span class="script">Sandhu</span>! 🌷</h1>
+<p class="lead">A little page, a little surprise, and a whole lot of good wishes — made just for you.</p>
+
+<button class="btn" onclick="document.querySelector('#memories').scrollIntoView({behavior:'smooth'})">
+Explore your surprise ✨
+</button>
+
+<button class="btn alt" onclick="openHidden()">
+Open a little note 💌
+</button>
+
+<p class="sub" style="margin-top:22px">
+Made with care, from a little distance away.
+</p>
+</div>
+</header>
+
+<main class="wrap">
+
+<!-- MEMORY GALLERY -->
+<section id="memories">
+<h2 class="title">Little moments, lovely memories</h2>
+<p class="sub">A collection of little memories that deserve to stay forever.</p>
+
+<div class="toolbar">
+<label class="btn" for="photoUpload">＋ Add photos</label>
+<input id="photoUpload" type="file" accept="image/*" multiple hidden>
+
+<button class="btn alt" onclick="slideshow()">▶ Slideshow</button>
+<button class="btn alt" onclick="stopSlide()">Ⅱ Stop</button>
+</div>
+
+<div class="panel">
+<div class="gallery" id="gallery"></div>
+
+<p class="privacy">
+Photos included in this website are loaded from its images folder.
+Photos selected using Add photos are only temporary browser previews.
+</p>
+</div>
+</section>
+
+<!-- BIRTHDAY LETTER -->
+<section>
+<h2 class="title">A small birthday note</h2>
+<p class="sub">A few words, just for you.</p>
+
+<div class="panel letter">
+<p>Sandhu, birthdays are a reminder that the world got one more reason to smile on this day. ♡</p>
+
+<p>I hope your day is filled with your favourite people, unexpected happiness, silly laughs and all the little things that make you feel special.</p>
+
+<p>Keep being your sweet, lovely self. Don't ever let that smile fade — you deserve so many beautiful things, today and always.</p>
+
+<p><b>Happy Birthday, Sandhya!</b> Have the happiest year ahead. 🌸</p>
+
+<div class="signature">— Someone who is cheering for you</div>
+</div>
+</section>
+
+<!-- ENVELOPE NOTE -->
+<section>
+<h2 class="title">A little envelope for you</h2>
+<p class="sub">Tap to open one more message.</p>
+
+<button class="envelope" onclick="openHidden()">💌</button>
+
+<div id="hiddenMessage" class="hidden">
+Some people make ordinary moments feel a little brighter just by being themselves.
+You're one of those people, Sandhu. I hope life gives you countless reasons to smile — not just today, but every day. ♡
+</div>
+</section>
+
+<!-- CAKE -->
+<section class="cake-area" id="cakeSection">
+<h2 class="title">A birthday moment, just for you 🎂</h2>
+<p class="sub">Make a wish, then cut your cake. Turn your sound on for the little celebration.</p>
+
+<div class="cake-stage" id="cakeStage">
+<div class="cake">🎂</div>
+<div class="knife">🔪</div>
+</div>
+
+<button class="btn" id="cutButton" onclick="cutCake()">Cut the cake 🎂</button>
+<button class="btn alt" id="musicToggle" style="display:none" onclick="toggleMusic()">Pause music ♫</button>
+
+<div class="status" id="status"></div>
+<div class="countdown" id="countdown"></div>
+
+<div class="note" id="birthdayNote">
+<div class="note-head">
+<small>A note that waited for you</small>
+<h3>Happy Birthday, Sandhya! 🌸</h3>
+<div>Read this whenever you're ready ♡</div>
+</div>
+
+<div class="note-body">
+<p>Sandhu, I hope today reminds you how much happiness you deserve — the kind that comes from little things, unexpected laughs, peaceful moments and people who genuinely wish the best for you.</p>
+
+<p>You're a sweet person, and I hope you never lose the simple things that make you <i>you</i>. May this new year of your life bring you beautiful opportunities, confidence, adventures and memories you'll smile about for a long time.</p>
+
+<p>Keep smiling, keep being your lovely self, and never forget that someone from a little distance away is wishing you the happiest birthday and cheering for you. 💗</p>
+
+<p><b>Happy Birthday, Sandhu.</b> You deserve a beautiful year ahead.</p>
+
+<div class="signature">With lots of good wishes ♡</div>
+</div>
+</div>
+
+<div class="wish" id="wish">
+One wish made, one cake cut, and a new year of possibilities begins. ✨
+</div>
+</section>
+</main>
+
+<footer>
+Made especially for Sandhu · 20.11.2026<br>
+A little surprise from miles away ♡
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeBox()">
+<button class="close" onclick="closeBox()">×</button>
+<button class="prev" onclick="move(-1)">‹</button>
+<img id="boxImg">
+<button class="next" onclick="move(1)">›</button>
+</div>
+
+<script>
+
+/* =====================================
+   PERMANENT PHOTOS
+   Put your photos inside the images folder
+   and use the filenames below.
+===================================== */
+
+let photos=[
+    {url:'images/p1.jpg',caption:'A lovely memory ♡'},
+    {url:'images/p2.jpg',caption:'One of those moments ✨'},
+    {url:'images/p3.jpg',caption:'Keep smiling 🌷'},
+    {url:'images/p4.jpg',caption:'A little memory to cherish 💗'}
+    ,{url:'images/p5.jpg',caption:'My favorite one 💗'}
+
+];
+
+let idx=0,
+slideTimer=null,
+audioCtx=null,
+musicTimer=null,
+musicOn=false,
+done=false;
+
+const gallery=document.getElementById('gallery');
+
+/* Add temporary photos through the upload button */
+document.getElementById('photoUpload').addEventListener('change',e=>{
+    for(const f of e.target.files){
+        if(f.type.startsWith('image/')){
+            photos.push({
+                url:URL.createObjectURL(f),
+                caption:''
+            });
+        }
+    }
+    render();
+    e.target.value='';
+});
+
+/* Render the gallery */
+function render(){
+    gallery.innerHTML='';
+
+    if(!photos.length){
+        gallery.innerHTML='<div class="empty">🌸<br>No photos added yet</div>';
+        return;
+    }
+
+    photos.forEach((p,i)=>{
+        let fig=document.createElement('figure');
+        fig.className='photo';
+
+        fig.style.setProperty(
+            '--tilt',
+            [-1.4,1.3,-.7,1.5][i%4]+'deg'
+        );
+
+        let im=document.createElement('img');
+        im.src=p.url;
+        im.alt=p.caption || 'Birthday memory';
+        im.onclick=()=>show(i);
+
+        let rm=document.createElement('button');
+        rm.className='remove';
+        rm.textContent='×';
+        rm.title='Remove photo';
+
+        rm.onclick=()=>{
+            if(photos[i].url.startsWith('blob:')){
+                URL.revokeObjectURL(photos[i].url);
+            }
+            photos.splice(i,1);
+            render();
+        };
+
+        let cap=document.createElement('input');
+        cap.className='caption';
+        cap.placeholder=[
+            'A lovely memory',
+            'A smile to remember',
+            'Just because',
+            'A little moment'
+        ][i%4];
+
+        cap.value=p.caption;
+        cap.oninput=()=>p.caption=cap.value;
+
+        fig.append(rm,im,cap);
+        gallery.append(fig);
+    });
+}
+
+/* Open photo in lightbox */
+function show(i){
+    idx=i;
+    document.getElementById('boxImg').src=photos[idx].url;
+    document.getElementById('lightbox').classList.add('open');
+}
+
+function closeBox(){
+    document.getElementById('lightbox').classList.remove('open');
+}
+
+function move(d){
+    if(!photos.length)return;
+    idx=(idx+d+photos.length)%photos.length;
+    document.getElementById('boxImg').src=photos[idx].url;
+}
+
+/* Slideshow */
+function slideshow(){
+    if(!photos.length){
+        alert('Add photos first 🌷');
+        return;
+    }
+
+    stopSlide();
+    show(0);
+
+    slideTimer=setInterval(()=>{
+        move(1);
+    },2400);
+}
+
+function stopSlide(){
+    if(slideTimer)clearInterval(slideTimer);
+    slideTimer=null;
+}
+
+/* Confetti */
+function sprinkle(){
+    let area=document.getElementById('confetti');
+    let items=['🌸','💗','✨','🌷','♡','🎉'];
+
+    for(let i=0;i<42;i++){
+        let s=document.createElement('span');
+        s.className='piece';
+        s.textContent=items[Math.random()*items.length|0];
+        s.style.left=Math.random()*100+'%';
+        s.style.animationDelay=Math.random()*.8+'s';
+
+        area.append(s);
+        setTimeout(()=>s.remove(),4800);
+    }
+}
+
+/* Envelope message */
+function openHidden(){
+    document.getElementById('hiddenMessage').classList.add('show');
+    sprinkle();
+}
+
+/* Birthday music */
+function startMusic(){
+    try{
+        audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();
+        audioCtx.resume();
+
+        musicOn=true;
+
+        document.getElementById('musicToggle').style.display='inline-block';
+        document.getElementById('musicToggle').textContent='Pause music ♫';
+
+        let melody=[
+            392,392,440,392,523,494,
+            392,392,440,392,587,523,
+            392,392,784,659,523,494,
+            440,698,698,659,523,587,523
+        ];
+
+        let dur=[
+            .36,.36,.72,.72,.72,1.05,
+            .36,.36,.72,.72,.72,1.05,
+            .36,.36,.72,.72,.72,.72,
+            1.05,.36,.36,.72,.72,.72,1.2
+        ];
+
+        let i=0;
+
+        function play(){
+            if(!musicOn)return;
+
+            let o=audioCtx.createOscillator();
+            let g=audioCtx.createGain();
+            let d=dur[i%dur.length];
+
+            o.type='sine';
+            o.frequency.value=melody[i%melody.length];
+
+            g.gain.setValueAtTime(.001,audioCtx.currentTime);
+            g.gain.exponentialRampToValueAtTime(.12,audioCtx.currentTime+.03);
+            g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+d*.85);
+
+            o.connect(g);
+            g.connect(audioCtx.destination);
+
+            o.start();
+            o.stop(audioCtx.currentTime+d);
+
+            i++;
+            musicTimer=setTimeout(play,d*1000);
+        }
+
+        play();
+
+    }catch(err){
+        document.getElementById('status').textContent=
+        'Audio unavailable, but the surprise continues!';
+    }
+}
+
+function stopMusic(){
+    musicOn=false;
+
+    if(musicTimer)clearTimeout(musicTimer);
+
+    if(audioCtx){
+        audioCtx.close();
+        audioCtx=null;
+    }
+
+    document.getElementById('musicToggle').textContent='Play music ♫';
+}
+
+function toggleMusic(){
+    if(musicOn){
+        musicOn=false;
+        clearTimeout(musicTimer);
+        document.getElementById('musicToggle').textContent='Play music ♫';
+    }else{
+        startMusic();
+    }
+}
+
+/* Cake-cutting celebration */
+function cutCake(){
+    if(done)return;
+
+    done=true;
+
+    let b=document.getElementById('cutButton');
+    b.disabled=true;
+    b.textContent='Cake cut! 🎉';
+
+    document.getElementById('cakeStage').classList.add('cut');
+    document.getElementById('status').textContent='Yay! Happy Birthday, Sandhu! 🎊';
+
+    sprinkle();
+    startMusic();
+
+    let n=30;
+    let cd=document.getElementById('countdown');
+
+    cd.classList.add('show');
+    cd.textContent='Your birthday celebration is happening… '+n+' seconds';
+
+    let t=setInterval(()=>{
+        n--;
+
+        if(n>0){
+            cd.textContent='Your birthday celebration is happening… '+n+' seconds';
+        }else{
+            clearInterval(t);
+
+            cd.textContent='And now… a little note just for you 💌';
+
+            stopMusic();
+
+            document.getElementById('birthdayNote').classList.add('reveal');
+            document.getElementById('wish').classList.add('show');
+
+            sprinkle();
+
+            document.getElementById('birthdayNote').scrollIntoView({
+                behavior:'smooth',
+                block:'center'
+            });
+        }
+    },1000);
+}
+
+/* Keyboard controls for lightbox */
+document.addEventListener('keydown',e=>{
+    if(e.key==='Escape')closeBox();
+
+    if(e.key==='ArrowRight' &&
+       document.getElementById('lightbox').classList.contains('open')){
+        move(1);
+    }
+
+    if(e.key==='ArrowLeft' &&
+       document.getElementById('lightbox').classList.contains('open')){
+        move(-1);
+    }
+});
+
+/* IMPORTANT: Load permanent photos immediately on page load */
+render();
+
+</script>
+</body>
+</html>
